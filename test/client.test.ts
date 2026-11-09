@@ -143,7 +143,8 @@ describe("client", () => {
     );
     assert.match(
       request.headers["user-agent"] ?? "",
-      /^websitescreenshotworld-node\/\d+\.\d+\.\d+ \(node \d+\.\d+\.\d+\)$/,
+      // Node.js pre-releases report versions such as 27.0.0-alpha.0.
+      /^websitescreenshotworld-node\/\d+\.\d+\.\d+ \(node \d+\.\d+\.\d+(-[0-9A-Za-z.]+)?\)$/,
     );
     assert.equal(request.headers.accept, "application/json");
     assert.equal(request.headers["content-type"], undefined);

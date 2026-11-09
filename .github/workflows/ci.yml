@@ -16,9 +16,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # The oldest supported release line and the newest release. Node.js 20 reached its end of
-        # life in April 2026.
-        node: ["22", "current"]
+        # The oldest supported release line and the newest one, pinned rather than "current", which
+        # setup-node can resolve to a pre-release. Node.js 20 reached its end of life in April 2026.
+        node: ["22", "26"]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
