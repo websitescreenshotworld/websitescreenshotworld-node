@@ -4,6 +4,11 @@ All notable changes to this package are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the package uses
 [semantic versioning](https://semver.org/).
 
+## [0.1.1] - 2026-11-10
+
+No changes to the library. The first release published from GitHub Actions through npm trusted publishing,
+so the package carries a provenance statement linking it to its source commit.
+
 ## [0.1.0] - 2026-11-09
 
 The first release.

@@ -1,6 +1,6 @@
 {
   "name": "@websitescreenshotworld/sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node.js client for the Website Screenshot World Instant Snap and Auto Schedule APIs, with webhook verification",
   "keywords": [
     "screenshot",
