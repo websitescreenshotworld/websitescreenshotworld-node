@@ -71,8 +71,8 @@ jobs:
             exit 1
           fi
 
-      # 0.1.0 was published once by hand, because npm lets a package trust a workflow only once the
-      # package exists. A version that is already on npm is skipped rather than failing the release.
+      # A version that is already on npm, such as one published by hand or by an earlier run of the same
+      # tag, is skipped rather than failing the release.
       - name: Check whether this version is already published
         id: published
         run: |
