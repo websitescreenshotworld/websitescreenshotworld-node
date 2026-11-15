@@ -1,8 +1,8 @@
 # Website Screenshot World for Node.js
 
 The official Node.js client for [Website Screenshot World](https://websitescreenshotworld.com): capture
-web pages on demand with **Instant Snap**, start a scheduled page's capture with **Auto Schedule**, and
-verify the webhooks both products send.
+web pages on demand with **Instant Snap**, start a scheduled page's capture with **Auto Schedule**, sign
+render links, and verify the webhooks both products send.
 
 - Written in TypeScript, with types for every option, answer and webhook event
 - ES modules and CommonJS, no runtime dependencies
@@ -250,6 +250,32 @@ controller.abort(); // `pending` rejects with the signal's reason
 ```
 
 `submit` and `submitToBucket` use `timeout`, not `captureTimeout`. A timeout raises `ConnectionError`. Cancelling stops the call and any retry it would make at once.
+
+## Render links
+
+A render link is a signed URL that is itself a screenshot, for an `<img>` tag, an email or a social
+preview. `RenderLink.build` makes one locally - nothing is sent and no client is needed - from the key's render
+secret (shown on the dashboard's API Keys page once render links are on for the key) and its 12-character prefix:
+
+```ts
+import { RenderLink } from "@websitescreenshotworld/sdk";
+
+const src = RenderLink.build({
+  renderSecret: process.env.WSW_RENDER_SECRET ?? "",
+  keyPrefix: "0123456789ab",
+  url: "https://example.com",
+  format: "webp",
+  width: 1280,
+  height: 720,
+  thumbWidth: 400,
+  ttl: 86_400, // serve the same capture for a day
+});
+// <img src={src} alt="example.com">
+```
+
+A view of the link that is not cached makes one capture from your plan; cached views are free. Keep the render
+secret on your server: anyone who has it can make links that use your captures. Render links are on the Pro,
+Business and Business Plus plans.
 
 ## Webhooks
 

@@ -58,6 +58,11 @@ export {
 
 export { Webhook, type VerifyOptions } from "./webhooks/webhook.js";
 export {
+  RenderLink,
+  type RenderLinkFormat,
+  type RenderLinkOptions,
+} from "./render-link.js";
+export {
   WebhookEventType,
   type AutoScheduleCaptureEvent,
   type CaptureChangedData,
