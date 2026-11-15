@@ -4,6 +4,15 @@ All notable changes to this package are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the package uses
 [semantic versioning](https://semver.org/).
 
+## [0.3.0] - 2026-11-15
+
+Follows the API spec at Instant Snap API 1.4.0 and Auto Schedule API 1.3.0.
+
+### Added
+
+- `instantSnap.account()` and `autoSchedule.account()`: whose key this is - its name and prefix, its product and
+  the email of the member who created it. Never the key itself, and it costs no capture, so it also checks a key.
+
 ## [0.2.0] - 2026-11-15
 
 Follows the API spec at Instant Snap API 1.3.0.

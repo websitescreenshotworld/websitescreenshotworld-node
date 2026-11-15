@@ -2,6 +2,11 @@ import { randomUUID } from "node:crypto";
 
 import { AuthenticationError } from "./errors.js";
 import { type FileDestination, writeBody } from "./files.js";
+import {
+  parseAccount,
+  type Account,
+  type WireAccount,
+} from "./models/account.js";
 import { captureFileFrom, type CaptureFile } from "./models/capture-file.js";
 import type {
   CaptureFileOptions,
@@ -248,6 +253,21 @@ export class InstantSnap {
       signal: requestOptions.signal,
     });
     return parseCatalog(wire as WireCatalog);
+  }
+
+  /**
+   * Whose key this is: its name and prefix, its product and the member who created it. Costs no
+   * capture, so it is also a cheap way to check a key works.
+   */
+  async account(requestOptions: RequestOptions = {}): Promise<Account> {
+    const wire = await this.#transport.json({
+      method: "GET",
+      url: this.#url("/instant-snap/v1/account"),
+      apiKey: this.#apiKey(),
+      timeout: requestOptions.timeout ?? this.#config.timeout,
+      signal: requestOptions.signal,
+    });
+    return parseAccount(wire as WireAccount);
   }
 
   get #transport(): Transport {

@@ -25,6 +25,7 @@ export type {
 export type { CaptureFile } from "./models/capture-file.js";
 export type { Catalog, DefaultViewport, Defaults } from "./models/defaults.js";
 export type { TriggerResult } from "./models/trigger-result.js";
+export type { Account } from "./models/account.js";
 export {
   CaptureFormat,
   CaptureStatus,

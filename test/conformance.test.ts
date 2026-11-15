@@ -116,6 +116,10 @@ function callFixture(
       return instantSnap.defaults();
     case "instant_snap.catalog":
       return instantSnap.catalog();
+    case "instant_snap.account":
+      return instantSnap.account();
+    case "auto_schedule.account":
+      return autoSchedule.account();
     case "auto_schedule.trigger_now":
       return autoSchedule.triggerNow(call.web_page_id ?? "");
     default:

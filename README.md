@@ -41,6 +41,15 @@ Every option of the API is available in camelCase: `mediaCategory`, `scrollMode`
 `client.instantSnap.defaults()` lists; `client.instantSnap.catalog()` lists the devices and proxy
 countries you can ask for. Names in `headers` and `cookies` are sent exactly as you write them.
 
+To check a key without spending a capture, ask whose it is:
+
+```ts
+const account = await client.instantSnap.account();
+console.log(`${account.keyName} (${account.email})`); // "Production (you@example.com)"
+```
+
+`client.autoSchedule.account()` does the same for an Auto Schedule key.
+
 ### Auto Schedule
 
 Web pages are set up in the dashboard. Start one's capture now with its id; the outcome arrives by
