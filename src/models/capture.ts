@@ -36,6 +36,8 @@ export interface S3Delivery {
  */
 export interface Capture {
   id: string;
+  /** The page the capture was asked for. `finalUrl` says where the browser ended up. */
+  url: string;
   /**
    * `succeeded`, `failed` and the other end states; an async capture from `submit` or
    * `submitToBucket` reads `queued` until a browser takes it and `running` while it is captured.
@@ -77,6 +79,7 @@ export interface Capture {
 /** A capture as the API sends it. */
 export interface WireCapture {
   id: string;
+  url?: string;
   status: string;
   response_type: string;
   media_category: string;
@@ -124,6 +127,8 @@ export type CaptureFields = Omit<
 export function parseCaptureFields(wire: WireCapture): CaptureFields {
   return {
     id: wire.id,
+    // Sent from API 1.3.0; empty only from an older server.
+    url: wire.url ?? "",
     status: wire.status,
     responseType: wire.response_type,
     mediaCategory: wire.media_category,

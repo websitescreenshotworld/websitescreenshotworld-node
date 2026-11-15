@@ -17,6 +17,10 @@ export const ErrorCode = {
   CaptureNotFound: "capture_not_found",
   WebPageNotFound: "web_page_not_found",
   NotFound: "not_found",
+  /** No webhook endpoint with that id in the key's organization. */
+  WebhookEndpointNotFound: "webhook_endpoint_not_found",
+  /** The organization already has as many webhook endpoints as it may (25). */
+  WebhookEndpointLimitReached: "webhook_endpoint_limit_reached",
   RateLimited: "rate_limited",
   /** Too many async captures are already waiting or running. Not retried. */
   QueueFull: "queue_full",
@@ -51,8 +55,14 @@ export const ERROR_KINDS = {
     "feature_not_available",
     "no_trigger_allowance",
     "forbidden",
+    "webhook_endpoint_limit_reached",
   ],
-  not_found: ["capture_not_found", "web_page_not_found", "not_found"],
+  not_found: [
+    "capture_not_found",
+    "web_page_not_found",
+    "not_found",
+    "webhook_endpoint_not_found",
+  ],
   rate_limit: ["rate_limited", "queue_full"],
   capture: [
     "capture_failed",

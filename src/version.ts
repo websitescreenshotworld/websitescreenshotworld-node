@@ -1,2 +1,2 @@
 /** The version of this library. Kept equal to `version` in package.json. */
-export const VERSION = "0.1.1";
+export const VERSION = "0.2.0";

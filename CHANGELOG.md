@@ -4,6 +4,17 @@ All notable changes to this package are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the package uses
 [semantic versioning](https://semver.org/).
 
+## [0.2.0] - 2026-11-15
+
+Follows the API spec at Instant Snap API 1.3.0.
+
+### Added
+
+- `Capture.url`: the page the capture was asked for, on every capture and on Instant Snap webhook events
+  (`capture.succeeded`, `capture.failed`, `delivery.completed`), as Auto Schedule events already had it.
+- The error codes of the webhook endpoints API: `webhook_endpoint_not_found` raises `NotFoundError` and
+  `webhook_endpoint_limit_reached` raises `PlanLimitError`.
+
 ## [0.1.1] - 2026-11-10
 
 No changes to the library. The first release published from GitHub Actions through npm trusted publishing,
